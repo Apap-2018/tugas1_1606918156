@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<h2>Tambah Jabatan</h2>	
+	
+	<form th:action="@{/jabatan/tambah}" th:object="${jabatan}" method="POST">
+		Nama: <br>
+		<input type="text" name="nama" />
+		<br>
+		Deskripsi: <br>
+		<input type="text" name="deskripsi" />
+		<br>
+		Gaji Pokok: <br>
+		<input type="number" name="gaji_pokok" />
+		<br><br>
+		<button type="submit">Simpan</button>
+	</body>
+
+</html>
