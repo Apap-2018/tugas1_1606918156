@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.apap.tugas1.model.PegawaiModel;
 import com.apap.tugas1.model.InstansiModel;
+import com.apap.tugas1.repository.InstansiDb;
 import com.apap.tugas1.repository.PegawaiDb;
 
 import java.util.List;
@@ -18,6 +19,11 @@ import java.util.List;
 public class PegawaiServiceImpl implements PegawaiService{
 	@Autowired
 	private PegawaiDb employeeDb;
+	
+	@Override
+	public PegawaiDb getPegawaiDb() {
+		return employeeDb;
+	}
 	
 	@Override
 	public void addPegawai(PegawaiModel employee) {
@@ -38,10 +44,9 @@ public class PegawaiServiceImpl implements PegawaiService{
 	}
 	
 	@Override
-	public List<PegawaiModel> allPegawai(InstansiModel instance) {
+	public List<PegawaiModel> allPegawai() {
 		// TODO Auto-generated method stub
-		List<PegawaiModel> employees = employeeDb.findAll();
-		return employees.stream().filter(employee -> employee.getInstansi().getId() == instance.getId()).collect(Collectors.toList());
+		return employeeDb.findAll();
 	}
 
 	@Override

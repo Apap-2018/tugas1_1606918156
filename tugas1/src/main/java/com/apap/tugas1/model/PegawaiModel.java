@@ -148,19 +148,19 @@ public class PegawaiModel implements Serializable{
 		this.jabatanPegawai = jabatanPegawai;
 	}
 	
-//	public Double hitungGaji() {
-//		double gaji = 0.0;
-//		double gajiPokok = 0.0;
-//		
-//		List<JabatanModel> jabatan = this.jabatanPegawai;
-//		InstansiModel instansi = this.instansi;
-//		
+	public Double hitungGaji() {
+		double gaji = 0.0;
+		double gajiPokok = 0.0;
+		
+		List<JabatanModel> jabatan = this.jabatanPegawai;
+		InstansiModel instansi = this.instansi;
+		
 //		Collections.sort(jabatan, new sortGajiPokok());
-//		gajiPokok = jabatan.get(jabatan.size()-1).getGajiPokok();
+//		gajiPokok = jabatan.get(jabatan.size()-1).getGaji_pokok();
 //		gaji = gajiPokok + ((instansi.getProvinsi().getPresentaseTunjangan() / 100) * gajiPokok);
 //		
-//		return gaji;
-//	}
+		return gaji;
+	}
 }
 
 

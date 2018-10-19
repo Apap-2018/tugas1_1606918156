@@ -13,21 +13,17 @@
 	<div class="container-fluid">
 		<h1>Sistem Informasi Kepegawaian</h1>
 		<h5>Selamat datang di Sistem Informasi Kepegawaian</h5>
-		<div class="row">
-			<div class="col-md-6">
-				<div class="card">
-					<div class="card-header">
-						Lihat Data Pegawai Berdasarkan NIP
-					</div>
-					<form th:action="@{/pegawai}" method="GET">
-						<div class="card-body">
-							<label for="employeeNIP">Masukkan Nomor Induk Pegawai</label>
-							<input type="text" name="nip" class="form-control" />
-							<button type="submit" class="btn btn-primary">Lihat</button>
-						</div>
-					</form>
-				</div>
+		<div class="card">
+			<div class="card-header">
+				Lihat Data Pegawai Berdasarkan NIP
 			</div>
+			<form th:action="@{/pegawai}" method="GET">
+			<div class="card-body">
+				<label for="employeeNIP">Masukkan Nomor Induk Pegawai</label>
+					<input type="text" name="nip" class="form-control" />
+							<button type="submit" class="btn btn-primary">Lihat</button>
+			</div>
+			</form>
 		</div>
 		<div class="card">
 		     <div class="card-header">
@@ -52,11 +48,11 @@
 		      Lihat Pegawai Termuda dan Tertua
 		     </div>
 		     <div class="card-body">
-		      <form th:action="@{/instansi/view}" method="GET">
+		      <form th:action="@{/pegawai/termuda-tertua}" method="GET">
 		       <div class="card-body">
 		       <label>Pilih Instansi</label>
 		        <select th:value="${listInstansi}" name = "idInstansi" required="required">
-		           <option th:each="instansi: ${listInstansi}" th:value="${instansi.id}" th:text="${instansi.nama}"> </option>    
+		           <option th:each="instansi : ${listInstansi}" th:value="${instansi.id}" th:text="${instansi.nama}"> </option>    
 		        </select>
 		        <br>
 		        <br>

@@ -11,6 +11,5 @@ public interface InstansiService {
 	void addInstansi(InstansiModel instance);
 	void deleteInstansi(InstansiModel instance);
 	List<InstansiModel> allInstansi();
-
 }
 

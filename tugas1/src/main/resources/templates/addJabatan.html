@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
+<head>
+	<object th:include="fragments/fragment :: title" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
 <body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	
 	<h2>Tambah Jabatan</h2>	
 	
 	<form th:action="@{/jabatan/tambah}" th:object="${jabatan}" method="POST">
@@ -12,9 +20,12 @@
 		<input type="text" name="deskripsi" />
 		<br>
 		Gaji Pokok: <br>
-		<input type="number" name="gaji_pokok" />
+		<input type="text" name="gaji_pokok" />
 		<br><br>
 		<button type="submit">Simpan</button>
-	</body>
+	</form>
+</body>
+
+</html>
 
 </html>
