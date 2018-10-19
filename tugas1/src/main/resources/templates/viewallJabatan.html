@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>		
+		<object th:include="fragments/fragment :: title" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	</head>
+	
+	<body>
+		<nav th:replace="fragments/fragment :: navbar"></nav>
+			
+		<table id="table_id" class="display">
+		    <thead>
+		        <tr>
+			        <th>Nama</th>
+					<th>Deskripsi</th>
+					<th>Gaji Pokok</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <tr th:each="jabatan : ${listJabatan}">
+					<td><p th:text="${jabatan.nama}"></p></td>
+					<td><p th:text="${jabatan.deskripsi}"></p></td>
+					<td><p th:text="${jabatan.gaji_pokok}"></p></td>
+				</tr>
+		    </tbody>
+		</table>
+			
+		<script>
+		
+			$(document).ready( function () {
+			    $('#table_id').DataTable();
+			} );
+		
+		</script>
+		
+	</body>
+</html>
