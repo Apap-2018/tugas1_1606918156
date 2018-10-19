@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf."src/main/resources/templates/view-dealer.html"org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<object th:include="fragments/fragment :: title" th:remove="tag"></object>
@@ -10,32 +10,36 @@
 <body>
 	<nav th:replace="fragments/fragment :: navbar"></nav>
 	
-	
-	<h3>Tambah Mobil</h3>
-	<form th:action="@{/car/add/} + ${dealer.id}" th:object="${dealer}" method="POST">
-		<input  type="hidden" th:field="*{id}"></input>
-		<table>
-			<thead>
-    			<tr>
-        			<th>Brand</th>
-					<th>Type</th>
-					<th>Price</th>
-					<th>Amount</th>
-      				<th><button type="submit" name="addRow">Add row</button></th>
-    			</tr>
-  			</thead>
-  			<tbody>
-    			<tr th:each="car,rowStat : *{listCar}">
-     				<td><input type="text" th:field="*{listCar[__${rowStat.index}__].brand}" /></td>
-					<td><input type="text" th:field="*{listCar[__${rowStat.index}__].type}" /></td>
-					<td><input type="number" th:field="*{listCar[__${rowStat.index}__].price}" /></td>
-					<td><input type="number" th:field="*{listCar[__${rowStat.index}__].amount}" /></td>
-      				<td><button type="submit" name="removeRow" th:value="${rowStat.index}">Remove</button></td>
-    			</tr>
-  			</tbody>
-		</table>
-		<button type="submit" name="save">submit</button>
-	</form>
+	 <div class="card-body">
+	 		<h2>Tambah Pegawai</h2>
+			<form th:action="@{/pegawai/tambah}" th:object="${pegawai}" method="POST">
+		
+			Nama <br>
+			<input type="text" name="nama" class="form-control" />
+			<br>
+			Tempat Lahir <br>
+			<input type="text" name="tempat_lahir" class="form-control" />
+			<br>
+			Tanggal Lahir <br>
+			<input type="text" name="tanggal_lahir" class="form-control" />
+			<br>
+			Tahun Masuk <br>
+			<input type="text" name="tahun_masuk" class="form-control" />
+			<br>
+			Provinsi <br>
+			<input type="text" name="provinsi" class="form-control" />
+			<br>
+			Nama Instansi <br>
+			<input type="text" name="nama_instansi" class="form-control"/>
+			<br>
+			Jabatan <br>
+			<input type="text" name="jabatan" class="form-control"/>
+			<br><br>
+			<button class="btn btn-primary active" role="button" type="submit">Simpan</button>
+		</form>
+	</div>
 </body>
+
+</html>
 
 </html>

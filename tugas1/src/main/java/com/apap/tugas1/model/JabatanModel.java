@@ -68,6 +68,16 @@ public class JabatanModel implements Serializable{
 		this.gaji_pokok = gaji_pokok;
 	}
 
+	@ManyToMany(fetch = FetchType.LAZY,
+			cascade = {
+					CascadeType.PERSIST,
+					CascadeType.MERGE
+			},
+			mappedBy = "jabatanPegawai")
+	private List<PegawaiModel> pegawaiList;
 	
+	public List<PegawaiModel> getPegawaiList() {
+		return pegawaiList;
+	}
 }
 

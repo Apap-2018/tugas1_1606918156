@@ -1,5 +1,7 @@
 package com.apap.tugas1.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +39,12 @@ public class JabatanServiceImpl implements JabatanService{
 		jabatanDb.delete(jabatan);
 		
 	}
-
+	@Override
+	public List<JabatanModel> allJabatan() {
+		// TODO Auto-generated method stub
+		return jabatanDb.findAll();
+	}
+	
 	@Override
 	public void updateJabatan(JabatanModel jabatan) {
 		for (int i = 0; i < jabatanDb.findAll().size(); i++) {

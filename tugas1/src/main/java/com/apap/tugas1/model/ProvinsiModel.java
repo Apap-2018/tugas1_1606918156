@@ -34,6 +34,14 @@ public class ProvinsiModel implements Serializable{
 	@OneToMany(mappedBy = "provinsi", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<InstansiModel> listInstansi;
 	
+	public List<InstansiModel> getInstansiList() {
+		return listInstansi;
+	}
+
+	public void setInstansiList(List<InstansiModel> instansiList) {
+		this.listInstansi = instansiList;
+	}
+	
 	public long getId() {
 		return id;
 	}

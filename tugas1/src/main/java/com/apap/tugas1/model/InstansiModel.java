@@ -79,9 +79,13 @@ public class InstansiModel implements Serializable{
 		this.listPegawai = listPegawai;
 	}
 
-	public Object getProvinsi() {
+	public ProvinsiModel getProvinsi() {
 		// TODO Auto-generated method stub
-		return null;
+		return provinsi;
+	}
+	
+	public void setProvinsi(ProvinsiModel provinsi) {
+		this.provinsi = provinsi;
 	}
 }
 

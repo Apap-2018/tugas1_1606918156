@@ -1,9 +1,7 @@
 package com.apap.tugas1.model;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -29,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "pegawai")
-public class PegawaiModel implements Serializable{
+public class PegawaiModel implements Serializable,Comparable<PegawaiModel> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -74,12 +72,12 @@ public class PegawaiModel implements Serializable{
 	}
 
 
-	public Date getTanggal_lahir() {
+	public String getTanggal_lahir() {
 		return tanggal_lahir;
 	}
 
 
-	public void setTanggal_lahir(Date tanggal_lahir) {
+	public void setTanggal_lahir(String tanggal_lahir) {
 		this.tanggal_lahir = tanggal_lahir;
 	}
 
@@ -121,7 +119,7 @@ public class PegawaiModel implements Serializable{
 	
 	@NotNull
 	@Column(name = "tanggal_lahir", nullable = false)
-	private Date tanggal_lahir;
+	private String tanggal_lahir;
 	
 	@NotNull
 	@Size(max = 255)
@@ -148,19 +146,19 @@ public class PegawaiModel implements Serializable{
 		this.jabatanPegawai = jabatanPegawai;
 	}
 	
-	public Double hitungGaji() {
-		double gaji = 0.0;
-		double gajiPokok = 0.0;
-		
-		List<JabatanModel> jabatan = this.jabatanPegawai;
-		InstansiModel instansi = this.instansi;
-		
-//		Collections.sort(jabatan, new sortGajiPokok());
-//		gajiPokok = jabatan.get(jabatan.size()-1).getGaji_pokok();
-//		gaji = gajiPokok + ((instansi.getProvinsi().getPresentaseTunjangan() / 100) * gajiPokok);
-//		
-		return gaji;
-	}
+//	public double getGaji() {
+//		List<JabatanModel> listjabatan = this.getJabatanPegawai();
+//		double gajiPokok = listjabatan.stream().mapToDouble(jabatan -> jabatan.getGaji_pokok()).sum();
+//		double tunjangan = this.getInstansi().getProvinsi().getPresentaseTunjangan();
+//		return gajiPokok * tunjangan ;
+//	}
+//	
+	@Override
+    public int compareTo(PegawaiModel other) {
+		int this_year = Integer.parseInt(this.getTanggal_lahir().split("-")[0]);
+		int other_year = Integer.parseInt(other.getTanggal_lahir().split("-")[0]);
+        return this_year > other_year ? -1 : 1;
+    }
 }
 
 

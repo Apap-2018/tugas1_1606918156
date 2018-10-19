@@ -10,20 +10,22 @@
 <body>
 	<nav th:replace="fragments/fragment :: navbar"></nav>
 	
-	<h2>Tambah Jabatan</h2>	
-	
-	<form th:action="@{/jabatan/tambah}" th:object="${jabatan}" method="POST">
-		Nama: <br>
-		<input type="text" name="nama" />
-		<br>
-		Deskripsi: <br>
-		<input type="text" name="deskripsi" />
-		<br>
-		Gaji Pokok: <br>
-		<input type="text" name="gaji_pokok" />
-		<br><br>
-		<button type="submit">Simpan</button>
-	</form>
+	 <div class="card-body">
+	 		<h2>Tambah Jabatan</h2>
+			<form th:action="@{/jabatan/tambah}" th:object="${jabatan}" method="POST">
+		
+			Nama: <br>
+			<input type="text" name="nama" class="form-control" />
+			<br>
+			Deskripsi: <br>
+			<input type="text" name="deskripsi" class="form-control"/>
+			<br>
+			Gaji Pokok: <br>
+			<input type="text" name="gaji_pokok" class="form-control"/>
+			<br><br>
+			<button class="btn btn-primary active" role="button" type="submit">Simpan</button>
+		</form>
+	</div>
 </body>
 
 </html>

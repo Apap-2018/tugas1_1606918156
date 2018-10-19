@@ -93,7 +93,6 @@ public class JabatanController {
 	@RequestMapping(value= "/jabatan/hapus/{idJabatan}", method = RequestMethod.POST)
 	private String deleteJabatan(@PathVariable(value = "idJabatan") Long idJabatan, Model model) {
 		
-		PegawaiDb pegawaiDb = pegawaiService.getPegawaiDb();
 		JabatanModel jabatan = jabatanService.getJabatanDetailById(idJabatan);
 		jabatan.setId(idJabatan);
 		jabatanService.deleteJabatan(jabatan);
@@ -102,6 +101,8 @@ public class JabatanController {
 		return "deleteJabatan";
 				
 	}
+	
+	
 	
 	
 	
