@@ -5,6 +5,8 @@
 		<object th:include="fragments/fragment :: title" th:remove="tag"></object>
 		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
 		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+		<script type="text/javascript" charset="utf8" src="	https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 	</head>
 	
@@ -27,7 +29,13 @@
 				</tr>
 		    </tbody>
 		</table>
-			
+		<script>
+		
+			$(document).ready( function () {
+			    $('#table_id').DataTable();
+			} );
+		
+		</script>
 		
 	</body>
 </html>

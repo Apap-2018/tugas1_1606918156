@@ -14,5 +14,7 @@ public interface PegawaiService {
 	PegawaiModel getPegawaiDetailByNip(String nip);
 	Optional<PegawaiModel> getEmployeeDetailById(Long id);
 	PegawaiDb getPegawaiDb();
+	String generateNip(PegawaiModel pegawai);
+	double getGaji(PegawaiModel pegawai);
 	
 }

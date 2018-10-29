@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.apap.tugas1.model.InstansiModel;
+import com.apap.tugas1.model.ProvinsiModel;
 import com.apap.tugas1.repository.InstansiDb;
 
 public interface InstansiService {
@@ -10,6 +11,6 @@ public interface InstansiService {
 	InstansiDb getInstansiDb();
 	void addInstansi(InstansiModel instance);
 	void deleteInstansi(InstansiModel instance);
-	List<InstansiModel> allInstansi();
+	List<InstansiModel> allInstansi(ProvinsiModel provinsi);
 }
 

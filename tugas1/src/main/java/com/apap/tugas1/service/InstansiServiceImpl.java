@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.apap.tugas1.model.InstansiModel;
+import com.apap.tugas1.model.ProvinsiModel;
 import com.apap.tugas1.repository.InstansiDb;
-import com.apap.tugas1.service.InstansiService;
 
 @Service
 @Transactional
@@ -40,7 +40,7 @@ public class InstansiServiceImpl implements InstansiService {
 	}
 	
 	@Override
-	public List<InstansiModel> allInstansi() {
+	public List<InstansiModel> allInstansi(ProvinsiModel provinsi) {
 		// TODO Auto-generated method stub
 		return instansiDb.findAll();
 	}

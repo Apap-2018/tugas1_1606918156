@@ -66,5 +66,10 @@ public class ProvinsiModel implements Serializable{
 		this.presentase_tunjangan = presentase_tunjangan;
 	}
 
+	public List<InstansiModel> getListInstansi() {
+		// TODO Auto-generated method stub
+		return listInstansi ;
+	}
+
 }
 

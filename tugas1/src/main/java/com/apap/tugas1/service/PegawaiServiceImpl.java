@@ -1,5 +1,9 @@
 package com.apap.tugas1.service;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -7,12 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.apap.tugas1.model.JabatanModel;
 import com.apap.tugas1.model.PegawaiModel;
-import com.apap.tugas1.model.InstansiModel;
-import com.apap.tugas1.repository.InstansiDb;
 import com.apap.tugas1.repository.PegawaiDb;
-
-import java.util.List;
 
 @Service
 @Transactional
@@ -53,5 +54,71 @@ public class PegawaiServiceImpl implements PegawaiService{
 	public PegawaiModel getPegawaiDetailByNip(String nip) {
 		// TODO Auto-generated method stub
 		return employeeDb.findByNip(nip);
+	}
+
+	@Override
+	public String generateNip(PegawaiModel pegawai) {		
+		String nipNew = "";
+		
+		String lastCode = "0";
+		String firstCode = "";
+		int urutanPegawai = 0;
+		
+		DateFormat df = new SimpleDateFormat("ddMMYY");
+		Date tglLahir = pegawai.getTanggal_lahir();
+		String formatted = df.format(tglLahir);
+		System.out.println("date :" + formatted);
+		
+		Long idInstansi = pegawai.getInstansi().getId();
+		System.out.println("kode instansi :"+ idInstansi);
+		
+		List<PegawaiModel> filter = this.allPegawai();
+
+		  filter = filter.stream()
+			.filter(peg -> peg.getInstansi().getId() == pegawai.getInstansi().getId())
+			.filter(peg -> peg.getTanggal_lahir().equals(pegawai.getTanggal_lahir()))
+			.filter(peg -> peg.getTahun_masuk().equalsIgnoreCase(pegawai.getTahun_masuk()))
+			.collect(Collectors.toList());
+	
+		  System.out.println(filter.size());
+		  
+		if (filter.isEmpty()) {
+			  urutanPegawai += 1;
+		}
+		  
+		else {
+			urutanPegawai = filter.size() + 1;
+		}
+		
+		if (Integer.toString(urutanPegawai).length() == 1) {
+			lastCode += Integer.toString(urutanPegawai);
+			nipNew = idInstansi + formatted + pegawai.getTahun_masuk() + lastCode;
+		}
+		
+		else {
+			firstCode += Integer.toString(urutanPegawai);
+			nipNew = idInstansi + formatted + pegawai.getTahun_masuk() + firstCode;
+		}
+		
+		return nipNew;
+	}
+	
+	@Override
+	public double getGaji(PegawaiModel pegawai) {
+		double gajiPokok = 0;
+		double totalGaji = 0;
+		
+		for (JabatanModel jabatan : pegawai.getJabatanPegawai()) {
+			double temp = jabatan.getGaji_pokok();
+			
+			if (temp > gajiPokok) {
+				gajiPokok = temp;
+			}
+		}
+		
+		double tunjangan = ((pegawai.getInstansi().getProvinsi().getPresentaseTunjangan() / 100) * gajiPokok);
+		totalGaji = gajiPokok + tunjangan;
+		
+		return totalGaji;
 	}
 }

@@ -23,7 +23,7 @@ public class ProvinsiServiceImpl implements ProvinsiService{
 		return provinsiDb;
 	}
 	@Override
-	public ProvinsiModel getProvinceDetailById(Integer id) {
+	public ProvinsiModel getProvinceDetailById(long id) {
 		// TODO Auto-generated method stub
 		return provinsiDb.findById(id);
 	}

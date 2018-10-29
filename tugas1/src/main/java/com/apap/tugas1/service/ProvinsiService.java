@@ -9,6 +9,6 @@ import com.apap.tugas1.repository.ProvinsiDb;
 public interface ProvinsiService {
 	ProvinsiDb getProvinsiDb();
 	List<ProvinsiModel> allProvinsi();
-	ProvinsiModel getProvinceDetailById(Integer id);
+	ProvinsiModel getProvinceDetailById(long id);
 	
 }
